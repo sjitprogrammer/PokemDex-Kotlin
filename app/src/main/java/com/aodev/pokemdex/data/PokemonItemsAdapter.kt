@@ -35,7 +35,7 @@ class PokemonItemsAdapter(
             .load(imageUrl)
             .placeholder(R.drawable.placeholder_pokeball)
             .into(holder.imageView);
-        holder.text_title.text = item.name
+        holder.text_title.text = item.name.capitalize()
 //        holder.text_number.text = "# " + item.id.toString()
 
         holder.itemView.setOnClickListener {

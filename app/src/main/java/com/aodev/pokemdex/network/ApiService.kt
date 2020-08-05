@@ -4,6 +4,7 @@ import com.aodev.pokemdex.network.data.Pokemon
 import com.aodev.pokemdex.network.data.PokemonList
 import com.google.gson.GsonBuilder
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -20,13 +21,13 @@ private val retrofit = Retrofit.Builder()
 interface ApiService {
 
     @GET("pokemon?limit=151")
-    fun fetchAllPokemon() : Call<PokemonList>
+    suspend fun fetchAllPokemon() : Response<PokemonList>
 
     @GET("pokemon/{id}")
-    fun fetchPokemon(@Path("id") id:Int) : Call<Pokemon>
+    suspend fun fetchPokemon(@Path("id") id:Int) : Response<Pokemon>
 
     @GET
-    fun fetchPokemonData(@Url url: String?): Call<Pokemon>
+    suspend fun fetchPokemonData(@Url url: String?): Response<Pokemon>
 }
 
 object MyApi {

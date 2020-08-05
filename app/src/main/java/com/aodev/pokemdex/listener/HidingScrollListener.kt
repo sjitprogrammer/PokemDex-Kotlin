@@ -13,19 +13,25 @@ abstract class HidingScrollListener : RecyclerView.OnScrollListener() {
             (recyclerView.layoutManager as LinearLayoutManager?)!!.findFirstVisibleItemPosition()
         if (firstVisibleItem == 0) {
             if (!mControlsVisible) {
-                Log.e("HidingScrollListener","if")
-                onShow()
+                Log.e("HidingScrollListener", "if")
+//                onShow()
+                onFirstItem()
                 mControlsVisible = true
+            }else{
+                onFirstItem()
             }
+
         } else {
             if (mScrolledDistance > HIDE_THRESHOLD && mControlsVisible) {
-                Log.e("HidingScrollListener","else in if")
+                Log.e(
+                    "HidingScrollListener",
+                    "mScrolledDistance > HIDE_THRESHOLD && mControlsVisible"
+                )
                 onHide()
                 mControlsVisible = false
                 mScrolledDistance = 0
             } else if (mScrolledDistance < -1000 && !mControlsVisible) {
-                Log.e("HidingScrollListener","else in else if")
-                Log.e("HidingScrollListener","else in else if"+mScrolledDistance)
+                Log.e("HidingScrollListener", "mScrolledDistance < -1000 && !mControlsVisible")
                 onShow()
                 mControlsVisible = true
                 mScrolledDistance = 0
@@ -39,6 +45,7 @@ abstract class HidingScrollListener : RecyclerView.OnScrollListener() {
 
     abstract fun onHide()
     abstract fun onShow()
+    abstract fun onFirstItem()
 
     companion object {
         private const val HIDE_THRESHOLD = 20

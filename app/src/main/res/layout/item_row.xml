@@ -28,7 +28,6 @@
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="TextView"
-            android:textSize="16sp"
             android:transitionName="textView_name" />
 
         <!--        <TextView-->

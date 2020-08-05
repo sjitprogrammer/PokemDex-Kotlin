@@ -54,14 +54,14 @@ class DetailFragment : Fragment() {
 
     private fun setPokemonAbilities(abilities: List<Ability>) {
         abilities.forEach {
-            val row = it.ability.name
+            val row = it.ability.name.capitalize()
             text_abilities.append("${row} ")
         }
     }
 
     private fun setPokemonDetail(item: Pokemon) {
         textView_number.text = "Number : " + item.id.toString()
-        textView_name.text = item.name
+        textView_name.text = item.name.capitalize()
 //        Log.e("test","height : ${item.height} = "+(item.height/10))
         text_height.text = (item.height * 0.1).toFloat().toString() + " m"
         text_weight.text = item.weight.toString() + " lbs"

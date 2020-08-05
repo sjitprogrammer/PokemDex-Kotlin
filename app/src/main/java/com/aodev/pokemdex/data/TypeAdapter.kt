@@ -41,7 +41,7 @@ class TypeAdapter(val context: Context, val title: ArrayList<String>) : Recycler
         }else{
             holder.text_title.background = context.getDrawable(R.drawable.flying_background)
         }
-        holder.text_title.text = type
+        holder.text_title.text = type.capitalize()
     }
 
     class ViewHolder(view: View) :RecyclerView.ViewHolder(view){

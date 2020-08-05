@@ -2,6 +2,7 @@ package com.aodev.pokemdex.screens
 
 import android.animation.Animator
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,7 +45,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
         val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         viewModel.homeListener = this
         if(tempItem.size==0) {
-            viewModel.fetchAllPokemon()
+            refreshLayout.isRefreshing = true
         }
         showData(tempItem)
         refreshLayout.setOnRefreshListener {
@@ -114,6 +115,10 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
             }
 
             override fun onShow() {
+
+            }
+
+            override fun onFirstItem() {
                 showViews()
             }
         })
@@ -146,7 +151,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
 
     private fun showViews() {
         imageView2.animate().translationY(0F)
-            .setDuration(500)
+            .setDuration(1000)
             .setInterpolator(DecelerateInterpolator(2F))
             .setListener(object: Animator.AnimatorListener {
                 override fun onAnimationRepeat(animation: Animator?) {
@@ -164,7 +169,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
                 }
 
             }).start()
-        searchView.animate().translationY(0F).setDuration(500).setInterpolator(DecelerateInterpolator(2F)).start()
+        searchView.animate().translationY(0F).setDuration(1000).setInterpolator(DecelerateInterpolator(2F)).start()
 
     }
 

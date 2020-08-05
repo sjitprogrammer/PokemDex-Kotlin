@@ -8,6 +8,10 @@ import com.aodev.pokemdex.network.MyApi
 import com.aodev.pokemdex.network.data.Pokemon
 import com.aodev.pokemdex.network.data.PokemonList
 import com.aodev.pokemdex.network.data.Result
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,68 +25,51 @@ class HomeViewModel : ViewModel() {
     private val list: ArrayList<Pokemon> = ArrayList()
     var homeListener: HomeListener? = null
 
-//    init {
-//        fetchAllPokemon()
-//    }
+    init {
+        if(list.size ==0){
+            homeListener?.fetchAllPokemon()
+            fetchAllPokemon()
+        }else{
+            Log.e(TAG, "_pokemonFetchAll : "+list.size)
+        }
+    }
 
     fun fetchAllPokemon() {
         _pokemonFetchAll.value = ArrayList()
         _pokemonList.value = ArrayList()
         list.clear()
         homeListener?.fetchAllPokemon()
-        MyApi.retrofitService.fetchAllPokemon().enqueue(object : Callback<PokemonList> {
-            override fun onFailure(call: Call<PokemonList>, t: Throwable) {
-                Log.e(TAG, "error : " + t)
-            }
 
-            override fun onResponse(
-                call: Call<PokemonList>,
-                response: Response<PokemonList>
-            ) {
-                if (response.isSuccessful) {
-
-                    _pokemonFetchAll.value = response.body()?.results
-                    Log.e(TAG, _pokemonFetchAll.toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            val allPokemon = MyApi.retrofitService.fetchAllPokemon()
+            withContext(Dispatchers.Main) {
+                if(allPokemon.isSuccessful) {
+                    _pokemonFetchAll.value = allPokemon.body()!!.results
                     fetchPokemonData();
-
-                } else {
-                    homeListener?.onFailure(response.errorBody().toString())
+                }else{
+                    homeListener?.onFailure(allPokemon.errorBody().toString())
                 }
             }
+        }
 
-        })
     }
 
     private fun fetchPokemonData() {
         val count = _pokemonFetchAll.value?.size
         Log.e(TAG, "_pokemonFetchAll : $count")
-        var i:Int = 0
+        var i: Int = 0
         _pokemonFetchAll.value?.forEach {
-
-            MyApi.retrofitService.fetchPokemonData(it.url).enqueue(object : Callback<Pokemon> {
-                override fun onFailure(call: Call<Pokemon>, t: Throwable) {
-                    Log.e(TAG, "error: ${i} : " + t)
-                }
-
-                override fun onResponse(
-                    call: Call<Pokemon>,
-                    response: Response<Pokemon>
-                ) {
-
-                    if (response.isSuccessful) {
-//                        Log.e(TAG, "fetchPokemonData")
-                        val body = response.body()
-                        val pokemon: Pokemon = body!!
-//                        Log.e(TAG + 1, pokemon.toString())
-
-                        list.add(pokemon)
+            GlobalScope.launch(Dispatchers.IO) {
+                val Pokemon =  MyApi.retrofitService.fetchPokemonData(it.url)
+                withContext(Dispatchers.Main) {
+                    if(Pokemon.isSuccessful) {
+                        list.add(Pokemon.body()!!)
                         _pokemonList.value = list
-//                        Log.e(TAG, "pokemon size : " + list.size)
+                    }else{
+                        homeListener?.onFailure(Pokemon.errorBody().toString())
                     }
-
                 }
-
-            })
+            }
         }
 
     }
