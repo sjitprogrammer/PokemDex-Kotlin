@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.os.bundleOf
@@ -31,7 +32,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
 
     val listItem:ArrayList<Pokemon> = ArrayList()
     val tempItem:ArrayList<Pokemon> = ArrayList()
-
+    lateinit var imageView2:ImageView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +42,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        imageView2 = view.findViewById(R.id.imageView2)
         val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         viewModel.homeListener = this
         if(tempItem.size==0) {
@@ -150,6 +151,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
     }
 
     private fun showViews() {
+
         imageView2.animate().translationY(0F)
             .setDuration(1000)
             .setInterpolator(DecelerateInterpolator(2F))

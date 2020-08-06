@@ -12,7 +12,7 @@
         android:padding="10dp"
         android:text="TextView"
         android:textColor="#fff"
-        android:textSize="12sp"
+        android:textSize="@dimen/text_type"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

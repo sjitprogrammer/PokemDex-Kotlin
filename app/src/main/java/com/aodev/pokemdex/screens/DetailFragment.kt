@@ -65,7 +65,7 @@ class DetailFragment : Fragment() {
 //        Log.e("test","height : ${item.height} = "+(item.height/10))
         text_height.text = (item.height * 0.1).toFloat().toString() + " m"
         text_weight.text = item.weight.toString() + " lbs"
-        text_category.text = "-"
+        text_category.text = item.baseExperience.toString()
 
     }
 
