@@ -5,11 +5,13 @@
 
 - Retrofit+Gson+Coroutines
 
-- RecyclerView
+- RecyclerView+Card
 
 - Responsive UI Phone,tablet 7",10"
 
 - search pokemon ตามสิ่งที่กรอกไปได้เช่น “pi” ก็จะแสดงรายการของ Pokemon ที่มีชื่อ“pi” 
+
+- ใช้ Glide แสดงรูปภาพ 
 
 - ใช้ Pull to refresh
 
