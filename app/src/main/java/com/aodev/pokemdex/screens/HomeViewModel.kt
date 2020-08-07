@@ -8,6 +8,7 @@ import com.aodev.pokemdex.network.MyApi
 import com.aodev.pokemdex.network.data.Pokemon
 import com.aodev.pokemdex.network.data.PokemonList
 import com.aodev.pokemdex.network.data.Result
+import com.aodev.pokemdex.repository.PokemonRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -24,13 +25,14 @@ class HomeViewModel : ViewModel() {
     val _pokemonList = MutableLiveData<List<Pokemon>>()
     private val list: ArrayList<Pokemon> = ArrayList()
     var homeListener: HomeListener? = null
+    val pokemonRepository: PokemonRepository = PokemonRepository()
 
     init {
-        if(list.size ==0){
+        if (list.size == 0) {
             homeListener?.fetchAllPokemon()
             fetchAllPokemon()
-        }else{
-            Log.e(TAG, "_pokemonFetchAll : "+list.size)
+        } else {
+            Log.e(TAG, "_pokemonFetchAll : " + list.size)
         }
     }
 
@@ -41,14 +43,18 @@ class HomeViewModel : ViewModel() {
         homeListener?.fetchAllPokemon()
 
         GlobalScope.launch(Dispatchers.IO) {
-            val allPokemon = MyApi.retrofitService.fetchAllPokemon()
-            withContext(Dispatchers.Main) {
-                if(allPokemon.isSuccessful) {
-                    _pokemonFetchAll.value = allPokemon.body()!!.results
-                    fetchPokemonData();
-                }else{
-                    homeListener?.onFailure(allPokemon.errorBody().toString())
+            try {
+                val allPokemon = pokemonRepository.fetchAllPokemon()
+                withContext(Dispatchers.Main) {
+                    if (allPokemon.isSuccessful) {
+                        _pokemonFetchAll.value = allPokemon.body()!!.results
+                        fetchPokemonData();
+                    } else {
+                        homeListener?.onFailure(allPokemon.errorBody().toString())
+                    }
                 }
+            } catch (e: Exception) {
+                Log.e(TAG, "fetchAllPokemon error : "+e.toString())
             }
         }
 
@@ -60,14 +66,18 @@ class HomeViewModel : ViewModel() {
         var i: Int = 0
         _pokemonFetchAll.value?.forEach {
             GlobalScope.launch(Dispatchers.IO) {
-                val Pokemon =  MyApi.retrofitService.fetchPokemonData(it.url)
-                withContext(Dispatchers.Main) {
-                    if(Pokemon.isSuccessful) {
-                        list.add(Pokemon.body()!!)
-                        _pokemonList.value = list
-                    }else{
-                        homeListener?.onFailure(Pokemon.errorBody().toString())
+                try {
+                    val Pokemon = pokemonRepository.fetchPokemonData(it.url)
+                    withContext(Dispatchers.Main) {
+                        if (Pokemon.isSuccessful) {
+                            list.add(Pokemon.body()!!)
+                            _pokemonList.value = list
+                        } else {
+                            homeListener?.onFailure(Pokemon.errorBody().toString())
+                        }
                     }
+                } catch (e: Exception) {
+                    Log.e(TAG, "fetchPokemonData error : "+e.toString())
                 }
             }
         }

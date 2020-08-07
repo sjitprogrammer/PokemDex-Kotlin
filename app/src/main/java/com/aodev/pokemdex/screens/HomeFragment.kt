@@ -93,12 +93,6 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
         })
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
-
-
     private fun showData(item:List<Pokemon>){
         val gridLayoutManager = GridLayoutManager(requireContext(),2)
         recyclerview.layoutManager = gridLayoutManager
@@ -153,7 +147,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
     private fun showViews() {
 
         imageView2.animate().translationY(0F)
-            .setDuration(1000)
+            .setDuration(500)
             .setInterpolator(DecelerateInterpolator(2F))
             .setListener(object: Animator.AnimatorListener {
                 override fun onAnimationRepeat(animation: Animator?) {
@@ -171,7 +165,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
                 }
 
             }).start()
-        searchView.animate().translationY(0F).setDuration(1000).setInterpolator(DecelerateInterpolator(2F)).start()
+        searchView.animate().translationY(0F).setDuration(500).setInterpolator(DecelerateInterpolator(2F)).start()
 
     }
 
