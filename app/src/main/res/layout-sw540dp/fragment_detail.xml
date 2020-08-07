@@ -1,474 +1,465 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/background_detail"
     tools:context=".screens.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:background="@drawable/background_detail">
+
+
+        <ImageView
+            android:id="@+id/imageView_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_baseline_arrow"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="number"
+            android:textColor="#fff"
+            android:textSize="@dimen/text_number"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_back" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="15dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <View
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="160dp"
+            android:background="@drawable/background_content"
+            android:paddingBottom="40dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_back">
+
+        </View>
+
+        <ImageView
+            android:id="@+id/imageView_icon"
+            android:layout_width="@dimen/image_pokemon"
+            android:layout_height="@dimen/image_pokemon"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/placeholder_image"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textView_number" />
+
+        <TextView
+            android:id="@+id/textView_name"
+            style="@style/title_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="pokemon name"
+            android:transitionName="textView_name"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_icon" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textView_name" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView_back"
-                android:layout_width="@dimen/button_back"
-                android:layout_height="@dimen/button_back"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_baseline_arrow" />
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview_type">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/ll_left"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Height"
+                    style="@style/title_label" />
+
+                <TextView
+                    android:id="@+id/text_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="@dimen/text_detail_val"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/title_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Weight"
+                    style="@style/title_label" />
+
+                <TextView
+                    android:id="@+id/text_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_detail_val"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_right"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/base_experience"
+                    style="@style/title_label" />
+
+                <TextView
+                    android:id="@+id/text_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="@dimen/text_detail_val"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/title_abilities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Abilities"
+                    style="@style/title_label"/>
+
+                <TextView
+                    android:id="@+id/text_abilities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_detail_val"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:text="Stats"
+            android:textColor="@color/title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="40dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textView_type">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:text="TextView"
-                        android:textColor="#fff"
-                        android:textSize="@dimen/text_number"
-                        android:textStyle="italic" />
-
-                    <ImageView
-                        android:id="@+id/imageView_icon"
-                        android:layout_width="@dimen/image_pokemon"
-                        android:layout_height="@dimen/image_pokemon"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/placeholder_image" />
-
-                    <TextView
-                        android:id="@+id/textView_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/top_mar"
-                        android:text="@string/hello_blank_fragment"
-                        android:textColor="#fff"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:transitionName="textView_name" />
-
                     <LinearLayout
-                        android:id="@+id/linearLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/textView5"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_gravity="center"-->
-                        <!--                            android:layout_weight="1"-->
-                        <!--                            android:text="Type"-->
-                        <!--                            android:textColor="#fff"-->
-                        <!--                            android:textSize="18sp"-->
-                        <!--                            android:textStyle="bold" />-->
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerview_type"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal" />
-
-                    </LinearLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="24dp"
-                        android:background="@drawable/content_background"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/background_red"
+                        android:orientation="horizontal"
                         android:paddingLeft="16dp"
                         android:paddingTop="10dp"
                         android:paddingRight="16dp"
                         android:paddingBottom="10dp">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/title_hp"
+                            style="@style/text_stats"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            android:text="Hp" />
 
-                            <LinearLayout
-                                android:id="@+id/ll_left"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/divider" />
 
-                                <TextView
-                                    android:id="@+id/title_height"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Height"
-                                    android:textColor="#fff"
-                                    android:textSize="@dimen/text_detail"
-                                    android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/text_hp"
+                            style="@style/text_stats_val"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Hp" />
+                    </LinearLayout>
 
-                                <TextView
-                                    android:id="@+id/text_height"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="TextView"
-                                    android:textSize="@dimen/text_detail"
-                                    android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/water_background"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="10dp">
 
-                                <TextView
-                                    android:id="@+id/title_weight"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Weight"
-                                    android:textColor="#fff"
-                                    android:textSize="@dimen/text_detail"
-                                    android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/title_attack"
+                            style="@style/text_stats"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Attack" />
 
-                                <TextView
-                                    android:id="@+id/text_weight"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView"
-                                    android:textSize="@dimen/text_detail"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/divider" />
 
-                            <LinearLayout
-                                android:id="@+id/ll_right"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/text_attack"
+                            style="@style/text_stats_val"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Attack" />
+                    </LinearLayout>
 
-                                <TextView
-                                    android:id="@+id/title_category"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/base_experience"
-                                    android:textColor="#fff"
-                                    android:textSize="@dimen/text_detail"
-                                    android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bug_background"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="10dp">
 
-                                <TextView
-                                    android:id="@+id/text_category"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="TextView"
-                                    android:textSize="@dimen/text_detail"
-                                    android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/title_defense"
+                            style="@style/text_stats"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Defense" />
 
-                                <TextView
-                                    android:id="@+id/title_abilities"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Abilities"
-                                    android:textColor="#fff"
-                                    android:textSize="@dimen/text_detail"
-                                    android:textStyle="bold" />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/divider" />
 
-                                <TextView
-                                    android:id="@+id/text_abilities"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text=""
-                                    android:textSize="@dimen/text_detail"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/text_defense"
+                            style="@style/text_stats_val"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Defense" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="40dp"
-                        android:text="Stats"
-                        android:textColor="#fff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="40dp"
-                        android:orientation="vertical">
+                        android:layout_margin="10dp"
+                        android:background="@drawable/fire_background"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="10dp">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/title_sp_atk"
+                            style="@style/text_stats"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/background_red"
-                            android:orientation="horizontal"
-                            android:paddingLeft="16dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="16dp"
-                            android:paddingBottom="10dp">
+                            android:text="Sp.Atk" />
 
-                            <TextView
-                                android:id="@+id/title_hp"
-                                style="@style/text_stats"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Hp" />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/divider" />
 
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/divider" />
-
-                            <TextView
-                                android:id="@+id/text_hp"
-                                style="@style/text_stats_val"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Hp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/text_sp_atk"
+                            style="@style/text_stats_val"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/water_background"
-                            android:orientation="horizontal"
-                            android:paddingLeft="16dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="16dp"
-                            android:paddingBottom="10dp">
-
-                            <TextView
-                                android:id="@+id/title_attack"
-                                style="@style/text_stats"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Attack" />
-
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/divider" />
-
-                            <TextView
-                                android:id="@+id/text_attack"
-                                style="@style/text_stats_val"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Attack" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/bug_background"
-                            android:orientation="horizontal"
-                            android:paddingLeft="16dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="16dp"
-                            android:paddingBottom="10dp">
-
-                            <TextView
-                                android:id="@+id/title_defense"
-                                style="@style/text_stats"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Defense" />
-
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/divider" />
-
-                            <TextView
-                                android:id="@+id/text_defense"
-                                style="@style/text_stats_val"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Defense" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/fire_background"
-                            android:orientation="horizontal"
-                            android:paddingLeft="16dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="16dp"
-                            android:paddingBottom="10dp">
-
-                            <TextView
-                                android:id="@+id/title_sp_atk"
-                                style="@style/text_stats"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Sp.Atk" />
-
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/divider" />
-
-                            <TextView
-                                android:id="@+id/text_sp_atk"
-                                style="@style/text_stats_val"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Sp.Atk" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/electric_background"
-                            android:orientation="horizontal"
-                            android:paddingLeft="16dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="16dp"
-                            android:paddingBottom="10dp">
-
-                            <TextView
-                                android:id="@+id/title_sp_def"
-                                style="@style/text_stats"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Sp.Def" />
-
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/divider" />
-
-                            <TextView
-                                android:id="@+id/text_sp_def"
-                                style="@style/text_stats_val"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Sp.Def" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/poison_background"
-                            android:orientation="horizontal"
-                            android:paddingLeft="16dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="16dp"
-                            android:paddingBottom="10dp">
-
-                            <TextView
-                                android:id="@+id/title_speed"
-                                style="@style/text_stats"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Speed" />
-
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/divider" />
-
-                            <TextView
-                                android:id="@+id/text_speed"
-                                style="@style/text_stats_val"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="TextView" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:orientation="horizontal"
-                            android:paddingLeft="16dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="16dp"
-                            android:paddingBottom="10dp">
-
-                            <TextView
-                                android:id="@+id/title_total"
-                                style="@style/text_stats"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="Total"
-                                android:textAlignment="textEnd" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/text_total"
-                                    android:layout_width="100dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="TextView"
-                                    android:textAlignment="center"
-                                    android:textColor="#f6f6f6"
-                                    android:textStyle="bold"
-                                    android:textSize="18sp" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="@drawable/divider_red" />
-
-                            </LinearLayout>
-                        </LinearLayout>
-
+                            android:text="Sp.Atk" />
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/electric_background"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/title_sp_def"
+                            style="@style/text_stats"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sp.Def" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/divider" />
+
+                        <TextView
+                            android:id="@+id/text_sp_def"
+                            style="@style/text_stats_val"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sp.Def" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/poison_background"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/title_speed"
+                            style="@style/text_stats"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Speed" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/divider" />
+
+                        <TextView
+                            android:id="@+id/text_speed"
+                            style="@style/text_stats_val"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="40dp">
+
+                        <TextView
+                            android:id="@+id/title_total"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Total : "
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/title"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/text_total"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textAlignment="center"
+                                android:textColor="@color/title"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@drawable/divider_red" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
