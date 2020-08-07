@@ -1,4 +1,5 @@
 # PokemDex-Kotlin
+แอปพลิเคชันแสดง list ของ Pokemon เมื่อทำการกดที่ Pokemon ตัวใดตัวนึงจะแสดงข้อมูลของPokemon ตัวนั้นอย่างละเอียด
 
 - design pattern MVVM
 
@@ -14,7 +15,7 @@
 
 - ใช้ Navigation Component
 
-- ใช้ animattion + shared element transition
+- ใช้ Animation + shared element transition
 
 
     
