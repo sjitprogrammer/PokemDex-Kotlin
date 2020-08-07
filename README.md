@@ -21,7 +21,7 @@
 
 
     
-<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/63003.gif" width="300"> 
+<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/63202.gif" width="300"> 
 </br>
 </br>
 home screen
@@ -29,4 +29,12 @@ home screen
 </br>
 </br>
 detail phone layout
-<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/phone_detail.jpg" width="300">
+<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/phone_detail1.jpg" width="300">
+</br>
+</br>
+detail tablet 7" layout
+<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/tablet540.png" width="400">
+</br>
+</br>
+detail tablet 10" layout
+<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/tablet720.png" width="500">
