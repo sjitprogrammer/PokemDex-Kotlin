@@ -18,12 +18,12 @@
 
 
     
-<img src="https://github.com/sjitprogrammer/GridLayoutFragment-kotlin/blob/master/image/63003.gif" width="300"> 
+<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/63003.gif" width="300"> 
 </br>
 </br>
 home screen
-<img src="https://github.com/sjitprogrammer/GridLayoutFragment-kotlin/blob/master/image/home_phone.jpg" width="300"> 
+<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/home_phone.jpg" width="300"> 
 </br>
 </br>
 detail phone layout
-<img src="https://github.com/sjitprogrammer/GridLayoutFragment-kotlin/blob/master/image/phone_detail.jpg" width="300">
+<img src="https://github.com/sjitprogrammer/PokemDex-Kotlin/blob/master/image/phone_detail.jpg" width="300">
