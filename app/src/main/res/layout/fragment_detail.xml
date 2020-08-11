@@ -1,445 +1,454 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    tools:context=".screens.DetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="detailViewModel"
+            type="com.aodev.pokemdex.screens.detail.DetailViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_detail">
+        android:background="@color/colorPrimaryDark"
+        tools:context=".screens.detail.DetailFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_detail">
 
 
-        <ImageView
-            android:id="@+id/imageView_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_baseline_arrow"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="number"
-            android:textColor="#fff"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_back" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="15dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
-
-        <View
-            android:id="@+id/constraintLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/background_content"
-            android:paddingBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_back">
-
-        </View>
-
-        <ImageView
-            android:id="@+id/imageView_icon"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/placeholder_image"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/textView_number" />
-
-        <TextView
-            android:id="@+id/textView_name"
-            style="@style/title_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:text="pokemon name"
-            android:transitionName="textView_name"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_icon" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/textView_name" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerview_type">
-
-            <LinearLayout
-                android:id="@+id/ll_left"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/title_height"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Height"
-                    style="@style/title_label" />
-
-                <TextView
-                    android:id="@+id/text_height"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="@dimen/text_detail_val"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/title_weight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Weight"
-                    style="@style/title_label" />
-
-                <TextView
-                    android:id="@+id/text_weight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_detail_val"
-                    android:text="TextView" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_right"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/title_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/base_experience"
-                    style="@style/title_label" />
-
-                <TextView
-                    android:id="@+id/text_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="@dimen/text_detail_val"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/title_abilities"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Abilities"
-                    style="@style/title_label"/>
-
-                <TextView
-                    android:id="@+id/text_abilities"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_detail_val"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:text="Stats"
-            android:textColor="@color/title"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/textView_type">
-
-            <LinearLayout
+            <ImageView
+                android:id="@+id/imageView_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/background_red"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="10dp">
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_baseline_arrow"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/title_hp"
-                    style="@style/text_stats"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Hp" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/divider" />
-
-                <TextView
-                    android:id="@+id/text_hp"
-                    style="@style/text_stats_val"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Hp" />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/textView_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/water_background"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="10dp">
+                android:layout_gravity="center"
+                android:text="@{detailViewModel.pokemonNumber()}"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_back" />
 
-                <TextView
-                    android:id="@+id/title_attack"
-                    style="@style/text_stats"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Attack" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/divider" />
-
-                <TextView
-                    android:id="@+id/text_attack"
-                    style="@style/text_stats_val"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Attack" />
-            </LinearLayout>
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/bug_background"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="10dp">
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="15dp" />
 
-                <TextView
-                    android:id="@+id/title_defense"
-                    style="@style/text_stats"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Defense" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/divider" />
-
-                <TextView
-                    android:id="@+id/text_defense"
-                    style="@style/text_stats_val"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Defense" />
-            </LinearLayout>
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/fire_background"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="10dp">
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
 
-                <TextView
-                    android:id="@+id/title_sp_atk"
-                    style="@style/text_stats"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Sp.Atk" />
+            <View
+                android:id="@+id/constraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="160dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/background_content"
+                android:paddingBottom="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_back">
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/divider" />
+            </View>
 
-                <TextView
-                    android:id="@+id/text_sp_atk"
-                    style="@style/text_stats_val"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Sp.Atk" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView_icon"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/placeholder_image"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/textView_number" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textView_name"
+                style="@style/title_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/electric_background"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="10dp">
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:transitionName="textView_name"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_icon" />
 
-                <TextView
-                    android:id="@+id/title_sp_def"
-                    style="@style/text_stats"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Sp.Def" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/divider" />
-
-                <TextView
-                    android:id="@+id/text_sp_def"
-                    style="@style/text_stats_val"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Sp.Def" />
-            </LinearLayout>
-
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/poison_background"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="10dp">
-
-                <TextView
-                    android:id="@+id/title_speed"
-                    style="@style/text_stats"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Speed" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/divider" />
-
-                <TextView
-                    android:id="@+id/text_speed"
-                    style="@style/text_stats_val"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-            </LinearLayout>
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/textView_name" />
 
             <LinearLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="10dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="10dp">
-
-                <TextView
-                    android:id="@+id/title_total"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Total : "
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerview_type">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/ll_left"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text_total"
-                        android:layout_width="120dp"
+                        android:id="@+id/title_height"
+                        style="@style/title_label"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:textAlignment="center"
+                        android:text="Height" />
+
+                    <TextView
+                        android:id="@+id/text_height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@{detailViewModel.pokemonHeight()}"
+                        android:textSize="@dimen/text_detail_val" />
+
+                    <TextView
+                        android:id="@+id/title_weight"
+                        style="@style/title_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Weight" />
+
+                    <TextView
+                        android:id="@+id/text_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{detailViewModel.pokemonWeight}"
+                        android:textSize="@dimen/text_detail_val" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_right"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/title_category"
+                        style="@style/title_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/base_experience" />
+
+                    <TextView
+                        android:id="@+id/text_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@{detailViewModel.pokemonBaseExperience}"
+                        android:textSize="@dimen/text_detail_val" />
+
+                    <TextView
+                        android:id="@+id/title_abilities"
+                        style="@style/title_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Abilities" />
+
+                    <TextView
+                        android:id="@+id/text_abilities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/text_detail_val" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:text="Stats"
+                android:textColor="@color/title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/textView_type">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/background_red"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/title_hp"
+                        style="@style/text_stats"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Hp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/divider" />
+
+                    <TextView
+                        android:id="@+id/text_hp"
+                        style="@style/text_stats_val"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Hp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/water_background"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/title_attack"
+                        style="@style/text_stats"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Attack" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/divider" />
+
+                    <TextView
+                        android:id="@+id/text_attack"
+                        style="@style/text_stats_val"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Attack" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/bug_background"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/title_defense"
+                        style="@style/text_stats"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Defense" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/divider" />
+
+                    <TextView
+                        android:id="@+id/text_defense"
+                        style="@style/text_stats_val"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Defense" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/fire_background"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/title_sp_atk"
+                        style="@style/text_stats"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sp.Atk" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/divider" />
+
+                    <TextView
+                        android:id="@+id/text_sp_atk"
+                        style="@style/text_stats_val"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sp.Atk" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/electric_background"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/title_sp_def"
+                        style="@style/text_stats"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sp.Def" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/divider" />
+
+                    <TextView
+                        android:id="@+id/text_sp_def"
+                        style="@style/text_stats_val"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sp.Def" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/poison_background"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/title_speed"
+                        style="@style/text_stats"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Speed" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/divider" />
+
+                    <TextView
+                        android:id="@+id/text_speed"
+                        style="@style/text_stats_val"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/title_total"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Total : "
+                        android:textAlignment="textEnd"
                         android:textColor="@color/title"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <View
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@drawable/divider_red" />
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/text_total"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textColor="@color/title"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@drawable/divider_red" />
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

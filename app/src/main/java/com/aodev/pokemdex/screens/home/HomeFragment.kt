@@ -1,4 +1,4 @@
-package com.aodev.pokemdex.screens
+package com.aodev.pokemdex.screens.home
 
 import android.animation.Animator
 import android.os.Bundle
@@ -43,6 +43,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         imageView2 = view.findViewById(R.id.imageView2)
+        Log.d("HomeFragment","onViewCreated")
         val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         viewModel.homeListener = this
         if(tempItem.size==0) {
@@ -53,6 +54,7 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
             listItem.clear()
             tempItem.clear()
             viewModel.fetchAllPokemon()
+            recyclerview.adapter?.notifyDataSetChanged()
         }
         viewModel._pokemonList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
 
@@ -63,6 +65,17 @@ class HomeFragment : Fragment(), OnItemClickListener, HomeListener {
                 listItem.addAll(it)
                 tempItem.addAll(it)
                 recyclerview.adapter?.notifyDataSetChanged()
+            }
+        })
+
+        viewModel.isConnectFalse.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if(it){
+                Log.e("HomeFragment","error")
+                refreshLayout.isRefreshing = false
+                listItem.clear()
+                tempItem.clear()
+                recyclerview.adapter?.notifyDataSetChanged()
+                Toast.makeText(requireContext(),"Can't fetch Pokemon data please check your internet!",Toast.LENGTH_LONG).show()
             }
         })
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{

@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.aodev.pokemdex.screens.HomeFragment"
+        android:name="com.aodev.pokemdex.screens.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.aodev.pokemdex.screens.DetailFragment"
+        android:name="com.aodev.pokemdex.screens.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <action
